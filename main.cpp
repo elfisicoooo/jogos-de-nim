@@ -61,6 +61,8 @@ struct Pilha {
     }
 
     void exibir() {
+        std::cout << "======================================\n";
+        std::cout << "\nEstado atual das pilhas: \n";
         std::cout << "\n";
         for (std::pair <int, int> x : pilhas) {
             std::cout << "Pilha " << x.first << ": ";
@@ -70,6 +72,7 @@ struct Pilha {
             std::cout << "\n";
         }
         std::cout << "\n";
+        std::cout << "======================================\n";
     }
 
     void retirar(char pilha_que_devemos_retirar, char quant_pecas) {
@@ -119,22 +122,19 @@ int main() {
         
         int jogador_atual = 2;
         while (!pilha.ha_vencedor()) {
-            std::cout << "======================================\n";
-            std::cout << "\nEstado atual das pilhas: \n";
             pilha.exibir();
             jogador_atual = 3 - jogador_atual;
-            std::cout << "======================================\n";
             std::cout << "\nJogador atual: " << jogador_atual << "\n";
 
             char qual_pilha_retirar;
             std::cout << "De qual pilha voce quer retirar? ";
             defina_opcao(qual_pilha_retirar, jogo + 2);
 
-            char retirar_da_pilha; 
+            char retirar_quantidade; 
             std::cout << "Insira quantas pecas voce quer retirar: ";
-            defina_opcao(retirar_da_pilha, 1);
+            defina_opcao(retirar_quantidade, 1);
             std::cout << "\n";
-            pilha.retirar(qual_pilha_retirar, retirar_da_pilha);
+            pilha.retirar(qual_pilha_retirar, retirar_quantidade);
 
             if(pilha.ha_vencedor()) {
                 std::cout << "PARABÉNS!! O jogador " << jogador_atual << " venceu!\n\n";
