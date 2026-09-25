@@ -14,6 +14,7 @@ void exiba_menu_principal() {
     std::cout << "======================================\n";
     std::cout << "Opção: ";
 }
+
 void defina_opcao(char& opcao, int x) {
     std::string k;
     std::cin >> k;
@@ -28,8 +29,8 @@ void defina_opcao(char& opcao, int x) {
         std::cout << "Insira uma opção valida: ";
         defina_opcao(opcao, x);
     }
-    
 }
+
 void exiba_menu_jogos() {
     std::cout << "======================================\n";
     std::cout << "Opçoes de jogos: \n";
@@ -38,6 +39,7 @@ void exiba_menu_jogos() {
     std::cout << "3) 5 pilhas com 9 pecas cada\n";
     std::cout << "\nInserir opção: ";
 }
+
 struct Pilha {
     std::map <int, int> pilhas;
     int tipo_de_jogo;
@@ -96,7 +98,6 @@ struct Pilha {
         }
         return true;
     }
-
 };
 
 int main() {
