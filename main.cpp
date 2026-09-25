@@ -108,6 +108,7 @@ int main() {
 
         if (querer == '2') {
             std::cout << "Programa encerrado... voltem sempre!\n";
+            break;
         }
 
         char jogo;
@@ -137,7 +138,7 @@ int main() {
             pilha.retirar(qual_pilha_retirar, retirar_da_pilha);
 
             if(pilha.ha_vencedor()) {
-                std::cout << "\nPARABÉNS!! O jogador " << jogador_atual << " venceu!\n\n";
+                std::cout << "PARABÉNS!! O jogador " << jogador_atual << " venceu!\n\n";
             }
         }
     }
