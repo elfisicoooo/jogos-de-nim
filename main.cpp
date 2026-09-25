@@ -6,12 +6,13 @@
 
 #include <iostream>
 #include <string>
-#include <stack>
+#include <map>
+#include <utility>
 
 void exiba_menu_principal() {
     std::cout << "======================================\n";
     std::cout << "SEJAM BEM VINDOS AOS JOGOS DE NIM!!!\n\n";
-    std::cout << "Nesses jogos para dois jogadores, vocês revezarao retirando peças de pilhas, e ganha quem retirar a ultima peca. Em cada vez, o jogador deve retirar 1 ou 2 pecas de somente uma pilha.\n";
+    std::cout << "Nesses jogos para dois jogadores, vocês revezarao retirando peças de pilhas, \ne ganha quem retirar a ultima peca. Em cada vez, o jogador deve retirar 1 ou 2 pecas de somente uma pilha.\n";
     std::cout << "\n======================================\n";
     std::cout << "O que vocês desejam fazer?\n\n";
     std::cout << "1) Jogar;\n";
@@ -44,11 +45,51 @@ void defina_opcao(char& opcao, int x) {
 void exiba_menu_jogos() {
     std::cout << "======================================\n";
     std::cout << "Opçoes de jogos: \n";
-    std::cout << "1) 3 pilhas com 5 pecas cada\n";
+    std::cout << "\n1) 3 pilhas com 5 pecas cada\n";
     std::cout << "2) 4 pilhas com 7 pecas cada\n";
     std::cout << "3) 5 pilhas com 9 pecas cada\n";
-    std::cout << "Inserir opção: ";
+    std::cout << "\nInserir opção: ";
 }
+
+struct Pilha {
+    std::map <int, int> pilhas;
+    void gerar(char& jogo) {
+        if (jogo == '1') {
+            for (int i = 0; i < 3; i ++) {
+                pilhas[i + 1] = 5;
+            }
+        } else if (jogo == '2') {
+            for (int i = 0; i < 4; i ++) {
+                pilhas[i + 1] = 7;
+            }
+        } else {
+            for (int i = 0; i < 5; i ++) {
+                pilhas[i + 1] = 9;
+            }
+        }
+    }
+
+    void exibir() {
+        std::cout << "\n";
+        for (std::pair <int, int> x : pilhas) {
+            std::cout << "Pilha " << x.first << ": ";
+            for (int i = 0; i < x.second; i ++) {
+                std::cout << "[]";
+            }
+            std::cout << "\n";
+        }
+    }
+
+    bool ha_vencedor() {
+        for (std::pair <int, int> x: pilhas) {
+            if (x.second != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+};
 
 int main() {
     char querer = '1';
@@ -63,5 +104,13 @@ int main() {
         char jogo;
         exiba_menu_jogos();
         defina_opcao(jogo, 2);
+
+        Pilha pilha;
+        pilha.gerar(jogo);
+        pilha.exibir();
+
+        while (!pilha.ha_vencedor()) {
+            
+        }
     }
 }
