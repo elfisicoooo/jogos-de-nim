@@ -7,7 +7,7 @@ void exiba_menu_principal() {
     std::cout << "======================================\n";
     std::cout << "SEJAM BEM VINDOS AOS JOGOS DE NIM!!!\n\n";
     std::cout << "Nesses jogos para dois jogadores, vocês revezarao retirando peças de pilhas, \ne ganha quem retirar a ultima peca. Em cada vez, o jogador deve retirar 1 ou 2 pecas de somente uma pilha.\n";
-    std::cout << "\n======================================\n";
+    std::cout << "======================================\n";
     std::cout << "O que vocês desejam fazer?\n\n";
     std::cout << "1) Jogar;\n";
     std::cout << "2) Sair;\n";
@@ -67,6 +67,7 @@ struct Pilha {
             }
             std::cout << "\n";
         }
+        std::cout << "\n";
     }
 
     void retirar(char pilha_que_devemos_retirar, char quant_pecas) {
@@ -131,7 +132,7 @@ int main() {
             char retirar_da_pilha; 
             std::cout << "Insira quantas pecas voce quer retirar: ";
             defina_opcao(retirar_da_pilha, 1);
-
+            std::cout << "\n";
             pilha.retirar(qual_pilha_retirar, retirar_da_pilha);
 
             if(pilha.ha_vencedor()) {
