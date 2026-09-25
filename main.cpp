@@ -1,9 +1,3 @@
-// pedir a cada jogador uma pilha e quantas pecas quer tirar
-// verificar se eh possivel retirar essa quantidade de peças, 
-// se sim, retirar e passar a vez, se nao, pedir outra quantidade
-// a cada rodada, verificar se há jogador vencedor, se sim, o parabenizar e retornar ao menu
-// indicar erros apropriados a cada entrada invalida dos usuarios.
-
 #include <iostream>
 #include <string>
 #include <map>
@@ -29,18 +23,12 @@ void defina_opcao(char& opcao, int x) {
     } else {
         opcao = k[0];
     }
-
-    if (x == 1) {
-        while (opcao != '1' && opcao != '2') {
-            std::cout << "Insira uma opção valida (1 ou 2):";
-            defina_opcao(opcao, 1);
-        }
-    } else {
-        while (opcao != '1' && opcao != '2' && opcao != '3') {
-            std::cout << "Insira uma opção valida (1, 2 ou 3):";
-            defina_opcao(opcao, 2);
-        }
+    
+    while (!(opcao >= '1' && (char)(49 + x) >= opcao)) {
+        std::cout << "Insira uma opção valida: ";
+        defina_opcao(opcao, x);
     }
+    
 }
 void exiba_menu_jogos() {
     std::cout << "======================================\n";
@@ -50,10 +38,11 @@ void exiba_menu_jogos() {
     std::cout << "3) 5 pilhas com 9 pecas cada\n";
     std::cout << "\nInserir opção: ";
 }
-
 struct Pilha {
     std::map <int, int> pilhas;
+    int tipo_de_jogo;
     void gerar(char& jogo) {
+        tipo_de_jogo = jogo;
         if (jogo == '1') {
             for (int i = 0; i < 3; i ++) {
                 pilhas[i + 1] = 5;
@@ -78,6 +67,24 @@ struct Pilha {
             }
             std::cout << "\n";
         }
+    }
+
+    void retirar(char pilha_que_devemos_retirar, char quant_pecas) {
+        while (pilhas[(int)pilha_que_devemos_retirar - 48] < (int)quant_pecas - 48) {
+            
+            std::cout << "Não foi possível retirar essa quantidade de pecas da pilha.\n";
+            
+            if (pilhas[(int)pilha_que_devemos_retirar - 48] == 0) {
+                std::cout << "Escolha outra pilha para retirar essa quantidade de peças: ";
+                defina_opcao(pilha_que_devemos_retirar, tipo_de_jogo + 2);
+
+            } else {
+                std::cout << "Escolha outra quantidade de peças para retirar da mesma pilha: ";
+                defina_opcao(quant_pecas, 1);
+            }
+        }
+
+        pilhas[(int)pilha_que_devemos_retirar - 48] -= (int)quant_pecas - 48;
     }
 
     bool ha_vencedor() {
@@ -107,10 +114,29 @@ int main() {
 
         Pilha pilha;
         pilha.gerar(jogo);
-        pilha.exibir();
-
+        
+        int jogador_atual = 2;
         while (!pilha.ha_vencedor()) {
-            
+            std::cout << "======================================\n";
+            std::cout << "\nEstado atual das pilhas: \n";
+            pilha.exibir();
+            jogador_atual = 3 - jogador_atual;
+            std::cout << "======================================\n";
+            std::cout << "\nJogador atual: " << jogador_atual << "\n";
+
+            char qual_pilha_retirar;
+            std::cout << "De qual pilha voce quer retirar? ";
+            defina_opcao(qual_pilha_retirar, jogo + 2);
+
+            char retirar_da_pilha; 
+            std::cout << "Insira quantas pecas voce quer retirar: ";
+            defina_opcao(retirar_da_pilha, 1);
+
+            pilha.retirar(qual_pilha_retirar, retirar_da_pilha);
+
+            if(pilha.ha_vencedor()) {
+                std::cout << "\nPARABÉNS!! O jogador " << jogador_atual << " venceu!\n\n";
+            }
         }
     }
 }
