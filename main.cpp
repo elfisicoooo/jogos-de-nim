@@ -74,7 +74,6 @@ struct Pilha {
 
     void retirar(char pilha_que_devemos_retirar, char quant_pecas) {
         while (pilhas[(int)pilha_que_devemos_retirar - 48] < (int)quant_pecas - 48) {
-            
             std::cout << "Não foi possível retirar essa quantidade de pecas da pilha.\n";
             
             if (pilhas[(int)pilha_que_devemos_retirar - 48] == 0) {
