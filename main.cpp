@@ -4,14 +4,14 @@
 #include <utility>
 
 void exiba_menu_principal() {
-    std::cout << "======================================\n";
+    std::cout << "============================================================================\n";
     std::cout << "SEJAM BEM VINDOS AOS JOGOS DE NIM!!!\n\n";
-    std::cout << "Nesses jogos para dois jogadores, vocês revezarao retirando peças de pilhas, \ne ganha quem retirar a ultima peca. Em cada vez, o jogador deve retirar 1 ou 2 pecas de somente uma pilha.\n";
-    std::cout << "======================================\n";
+    std::cout << "Nesses jogos para dois jogadores, vocês revezarao retirando peças de pilhas, \ne ganha quem retirar a ultima peca. \nEm cada vez, o jogador deve retirar 1 ou 2 pecas de somente uma pilha.\n";
+    std::cout << "============================================================================\n";
     std::cout << "O que vocês desejam fazer?\n\n";
     std::cout << "1) Jogar;\n";
     std::cout << "2) Sair;\n";
-    std::cout << "======================================\n";
+    std::cout << "============================================================================\n";
     std::cout << "Opção: ";
 }
 
@@ -120,6 +120,7 @@ int main() {
         Pilha pilha;
         pilha.gerar(jogo);
         
+        jogo = jogo - '1';
         int jogador_atual = 2;
         while (!pilha.ha_vencedor()) {
             pilha.exibir();
