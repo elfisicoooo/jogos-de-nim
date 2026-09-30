@@ -13,6 +13,51 @@ Os jogos de Nim são clássicos jogos matemáticos que consistem em retirar peç
 
 ### Instalação e Pré-requisitos
 
+Para compilar o projeto, é necessário ter um compilador C++ compatível com o comando `g++` instalado no sistema.
+
+### macOS
+
+No macOS, instale o Xcode Command Line Tools:
+
+```bash
+xcode-select --install
+```
+
+### Windows
+
+No Windows, uma opção é instalar o **MSYS2**, que fornece o ambiente e as ferramentas necessárias para utilizar o `g++`.
+
+Após instalar o MSYS2, abra o terminal **MSYS2 UCRT64** e instale o compilador:
+
+```bash
+pacman -S mingw-w64-ucrt-x86_64-gcc
+```
+### Linux
+
+Em distribuições baseadas em **Debian/Ubuntu**, instale o compilador C++ com:
+
+```bash
+sudo apt update
+sudo apt install g++
+```
+
+Em distribuições baseadas em **Fedora**, use:
+
+```bash
+sudo dnf install gcc-c++
+```
+
+Em outras distribuições Linux, consulte o gerenciador de pacotes da sua distribuição para instalar o pacote que fornece o `g++`.
+
+Depois da instalação (independente do sistema) verifique se o compilador está disponível:
+
+```bash
+g++ --version
+```
+
+Com o `g++` instalado e disponível no terminal, siga as instruções abaixo para compilar e executar o programa.
+
+
 1. No terminal, digite:
 
     ```
