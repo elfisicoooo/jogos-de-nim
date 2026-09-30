@@ -7,8 +7,8 @@ Os jogos de Nim são clássicos jogos matemáticos que consistem em retirar peç
 ### Capturas de tela
 
 <p align="center">
-  <img src="./demonstracoes/Dem1.png" width="45%" alt="Foto 1">
-  <img src="./demonstracoes/Dem2.png" width="45%" alt="Foto 2">
+  <img src="./demonstracoes/dem1.png" width="45%" alt="Foto 1">
+  <img src="./demonstracoes/dem2.png" width="45%" alt="Foto 2">
 </p>
 
 ### Instalação e Pré-requisitos
