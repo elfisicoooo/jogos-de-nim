@@ -35,7 +35,7 @@ Os jogos de Nim são clássicos jogos matemáticos que consistem em retirar peç
 
     Linux/macOS:
     ```
-    ./jogo-da-velha
+    ./jogos-de-nim
     ```
 
 ### Usos e exemplos
