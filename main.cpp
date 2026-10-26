@@ -16,18 +16,22 @@ void exiba_menu_principal() {
 }
 
 void defina_opcao(char& opcao, int x) {
-    std::string k;
-    std::getline(std::cin, k);
+    bool definido = false;
+    while (!definido) {
+        std::string k;
+        std::getline(std::cin, k);
 
-    if (k.size() > 1) {
-        opcao = '0';
-    } else {
-        opcao = k[0];
-    }
-    
-    while (!(opcao >= '1' && (char)(49 + x) >= opcao)) {
-        std::cout << "Insira uma opção valida: ";
-        defina_opcao(opcao, x);
+        if (k.size() > 1) {
+            opcao = '0';
+        } else {
+            opcao = k[0];
+        }
+        
+        if (opcao >= '1' && (char)(49 + x) >= opcao) {
+            definido = true;
+        } else {
+            std::cout << "Insira uma opção valida: ";
+        }
     }
 }
 
