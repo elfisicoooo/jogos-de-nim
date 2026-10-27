@@ -21,7 +21,7 @@ void defina_opcao(char& opcao, int x) {
         std::string k;
         std::getline(std::cin, k);
 
-        if (k.size() > 1) {
+        if (k.size() != 1) {
             opcao = '0';
         } else {
             opcao = k[0];
